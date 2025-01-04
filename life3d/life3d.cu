@@ -13,6 +13,7 @@
 #include <string>
 using namespace std;
 
+//全局变量，交换指针
 char * tmp;
 #define AT(x, y, z) universe[(x) * N * N + (y) * N + z]
 #define EXCHANGE_PTR(x,y) {tmp=x; x=y; y=tmp;}
@@ -91,6 +92,8 @@ void life3d_run_cpu(int N, char *universe, int T)
 
 
 // 读取输入文件
+// input_file 输入文件的路径
+// buffer 存储读取数据的缓冲区
 void read_file(char *input_file, char *buffer)
 {
     ifstream file(input_file, std::ios::binary | std::ios::ate);
@@ -110,6 +113,8 @@ void read_file(char *input_file, char *buffer)
 }
 
 // 写入输出文件
+// output_file 输出文件的路径
+// buffer 存储要写入数据的缓冲区
 void write_file(char *output_file, char *buffer, int N)
 {
     ofstream file(output_file, std::ios::binary | std::ios::trunc);
