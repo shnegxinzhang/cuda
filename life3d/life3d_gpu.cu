@@ -166,11 +166,11 @@ int main(int argc, char **argv)
         return 1;
     }
 //定义需要的变量，包括分块尺寸等
-    int threadBlockSize=4;
-    int N = std::stoi(argv[1]);
-    int T = std::stoi(argv[2]);
-    char *input_file = argv[3];
-    char *output_file = argv[4];
+    int threadBlockSize=4;					//块尺寸
+    int N = std::stoi(argv[1]);					//世界网格大小
+    int T = std::stoi(argv[2]);					//迭代次数
+    char *input_file = argv[3];				//初始文件
+    char *output_file = argv[4];				//输出文件
     char *grid = (char *)malloc(N * N * N);		// 分配主机内存存储网格数据
     read_file(input_file, grid);					// 从文件读取初始状态
     // 计算初始存活细胞的数量
