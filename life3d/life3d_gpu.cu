@@ -173,16 +173,15 @@ int main(int argc, char **argv)
     char *output_file = argv[4];				//输出文件
     char *grid = (char *)malloc(N * N * N);		// 分配主机内存存储网格数据
     read_file(input_file, grid);					// 从文件读取初始状态
-    // 计算初始存活细胞的数量
-    int start_pop = population(N, grid);
-    //统计时间end_time-start_time
-    auto start_time = std::chrono::high_resolution_clock::now();
+    int start_pop = population(N, grid);			// 计算初始存活细胞的数量
+    auto start_time = std::chrono::high_resolution_clock::now();		//统计时间end_time-start_time
     // 在 GPU 上运行 3D 生命游戏
     life3d_gpu(N, grid, T, threadBlockSize);
     auto end_time = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> duration = end_time - start_time;
     // 计算最终存活细胞的数量
     int final_pop = population(N, grid);
+    //将计算结果存入文件中
     write_file(output_file, grid, N);
     
     cout << "TPB:" << threadBlockSize << "*" << threadBlockSize << "*" << threadBlockSize << endl;
