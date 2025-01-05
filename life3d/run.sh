@@ -7,3 +7,7 @@ python3 RandGen.py $N
 nvcc life3d.cu -o life3d
 echo "./life3d $N $T data/data.in data/data.out"
 ./life3d $N $T data/data.in data/data.out
+
+nvcc life3d_gpu.cu -o life3d_gpu
+echo "./life3d_gpu $N $T data/data.in data/data.out"
+./life3d_gpu $N $T data/data.in data/data.out
